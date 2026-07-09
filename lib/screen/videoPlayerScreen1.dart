@@ -316,7 +316,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                           ),
 
                           suggestedVideo(
-                            Colors.blue,
+                            Colors.red,
                             "Amazing Space Documentary",
                           ),
 
