@@ -311,7 +311,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                           suggestedVideo(Colors.red, "Top 10 Doraemon Gadgets"),
 
                           suggestedVideo(
-                            Colors.yellow,
+                            Colors.green,
                             "Shinchan Funny Moments",
                           ),
 
