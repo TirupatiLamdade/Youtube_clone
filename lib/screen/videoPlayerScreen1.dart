@@ -304,14 +304,14 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                           const SizedBox(height: 12),
 
                           suggestedVideo(
-                            Colors.grey,
+                            const Color.fromARGB(255, 188, 54, 54),
                             "NASA discovers alien life on Mars",
                           ),
 
                           suggestedVideo(Colors.red, "Top 10 Doraemon Gadgets"),
 
                           suggestedVideo(
-                            Colors.green,
+                            Colors.yellow,
                             "Shinchan Funny Moments",
                           ),
 
