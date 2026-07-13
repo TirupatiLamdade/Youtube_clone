@@ -15,19 +15,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'screns',
-     
+
       debugShowCheckedModeBanner: false,
-      theme:ThemeData(
+      theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
-      
       ),
-      initialRoute: '/',routes: {
-        '/':(context) => Homescreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Homescreen(),
         // ignore: equal_keys_in_map
-       '/youtubevedioplay':(context) => Videoplayerscreen(),
+        '/youtubevedioplay': (context) => Videoplayerscreen(),
       },
     );
   }
 }
-
- 

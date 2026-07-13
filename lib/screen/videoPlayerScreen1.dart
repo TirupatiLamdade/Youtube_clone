@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_youtube_01/widgets/ytActionButtonWidget.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -20,7 +21,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
     super.initState();
 
     final videoId = YoutubePlayer.convertUrlToId(
-      "https://youtu.be/hi0Afjhqm40?si=p76AcYDWgl_-i53o",
+      "https://youtu.be/05DrDxjMEbU?si=-S-meYb5S6aZ8VTK",
     );
 
     _controller = YoutubePlayerController(
@@ -33,51 +34,6 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  Widget _buildActionButton(IconData icon, String label) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, size: 20, color: Colors.black),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget suggestedVideo(Color color, String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Column(
-        children: [
-          Container(height: 220, width: double.infinity, color: color),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              const CircleAvatar(radius: 20, child: Icon(Icons.person)),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
-              ),
-              const Icon(Icons.more_vert),
-            ],
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -160,6 +116,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                                   ],
                                 ),
                               ),
+
                               GestureDetector(
                                 onTap: () {
                                   setState(() {
@@ -176,54 +133,23 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                                     vertical: 10,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: textValue == "Subscribed"
-                                        ? Colors.black
-                                        : Colors.grey,
+                                    color: textValue == "Subscribe"
+                                        ? Colors.grey.shade300
+                                        : Colors.black,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        textValue,
-                                        style: TextStyle(
-                                          color: textValue == "Subscribed"
-                                              ? Colors.white
-                                              : Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ],
+                                  child: Text(
+                                    textValue,
+                                    style: TextStyle(
+                                      color: textValue == "Subscribe"
+                                          ? Colors.black
+                                          : Colors.grey.shade300,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     setState(() {
-                              //       if (textValue == "Subcribe") {
-                              //         textValue = "subcribed";
-                              //       } else {
-                              //         textValue = "subcribe";
-                              //       }
-                              //     });
-                              //   },
-                              //   child: Container(
-                              //     width: 80
-                              //     ,height: 20,
-                              //     padding: EdgeInsets.symmetric(
-                              //       horizontal: 18,
-                              //       vertical: 10,
-                              //     ),
-                              //     decoration: BoxDecoration(
-                              //       color: Colors.amberAccent,
-                              //       borderRadius: BorderRadius.circular(6),
-                              //      // border: Border.all(),
-                              //     ),
-                              //     child: Text(textValue,style:TextStyle(color: Colors.cyan),),
-                              //   ),
-
-                              // ),
                             ],
                           ),
 
@@ -233,6 +159,7 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
+                                
                                 GestureDetector(
                                   onTap: () {
                                     setState(() {
@@ -243,47 +170,45 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                                       }
                                     });
                                   },
-                                  child: _buildActionButton(
+                                  child: buildActionButton(
                                     isliked
                                         ? Icons.thumb_up
                                         : Icons.thumb_up_alt_outlined,
                                     "1.5K",
                                   ),
                                 ),
-                                     GestureDetector(
+                                const SizedBox(width: 8),
+
+                                GestureDetector(
                                   onTap: () {
                                     setState(() {
                                       if (dislike == true) {
-                                       dislike = false;
+                                        dislike = false;
                                       } else {
                                         dislike = true;
                                       }
                                     });
                                   },
-                                  child: _buildActionButton(
-                                    isliked
-                                        ?  Icons.thumb_down_alt_outlined
+                                  child:buildActionButton(
+                                    dislike
+                                        ? Icons.thumb_down_alt_outlined
                                         : Icons.thumb_down,
                                     "1.5K",
                                   ),
                                 ),
-                                // const SizedBox(width: 8),
-                                // _buildActionButton(
-                                //   Icons.thumb_down_alt_outlined,
-                                //   "Dislike",
-                                // ),
+
                                 const SizedBox(width: 8),
-                                _buildActionButton(
+                                buildActionButton(
                                   Icons.reply_outlined,
                                   "Share",
                                 ),
                                 const SizedBox(width: 8),
-                                _buildActionButton(
+                                buildActionButton(
                                   Icons.download_outlined,
                                   "Download",
                                 ),
                                 const SizedBox(width: 8),
-                                _buildActionButton(
+                                buildActionButton(
                                   Icons.library_add_outlined,
                                   "Save",
                                 ),
@@ -304,25 +229,38 @@ class _VideoplayerscreenState extends State<Videoplayerscreen> {
                           const SizedBox(height: 12),
 
                           suggestedVideo(
-                            const Color.fromARGB(255, 188, 54, 54),
+                            Colors.grey,
                             "NASA discovers alien life on Mars",
+                            'https://images.seeklogo.com/logo-png/36/1/nasa-logo-png_seeklogo-369096.png',
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFS7qZI7TDKUvcWqIfnWMghgJLWmukAm7WdvChyHRP-A&s=10',
                           ),
 
-                          suggestedVideo(Colors.red, "Top 10 Doraemon Gadgets"),
+                          suggestedVideo(
+                            Colors.red,
+                            "Top 10 Doraemon Gadgets",
+                            '',
+                            '',
+                          ),
 
                           suggestedVideo(
                             Colors.green,
                             "Shinchan Funny Moments",
+                            '',
+                            '',
                           ),
 
                           suggestedVideo(
                             Colors.blue,
                             "Amazing Space Documentary",
+                            '',
+                            '',
                           ),
 
                           suggestedVideo(
                             Colors.orange,
                             "Flutter Complete Course",
+                            '',
+                            '',
                           ),
                         ],
                       ),
