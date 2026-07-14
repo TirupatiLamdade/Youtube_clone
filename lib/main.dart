@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:flutter_youtube_01/screen/homescreen.dart';
-import 'package:flutter_youtube_01/screen/videoPlayerScreen1.dart';
+
+import 'package:youtube/screen/homescreen.dart';
+import 'package:youtube/screen/videoPlayerScreen1.dart';
 
 void main() {
   runApp(const MyApp());

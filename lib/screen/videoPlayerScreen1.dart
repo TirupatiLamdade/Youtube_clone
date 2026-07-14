@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_youtube_01/widgets/ytActionButtonWidget.dart';
+import 'package:youtube/widgets/ytActionButtonWidget.dart';
 
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
